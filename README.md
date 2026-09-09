@@ -4,8 +4,7 @@ This is a WIP for embedding Chatterino into OBS.
 
 For build documentation see https://github.com/obsproject/obs-plugintemplate.
 
-Only tested on Windows right now.
-Building/testing:
+Building/testing on Windows:
 
 ```
 git submodule update --init --recursive
@@ -20,6 +19,49 @@ This will probably cause issues on some systems, because OBS' build doesn't incl
 Then you can start OBS. In `Tools`, you should see a new item.
 
 As you can tell, this is not an ideal workflow.
+
+## Linux / Fedora 44
+
+On Fedora, install this as a per-user OBS plugin under `~/.config/obs-studio/plugins`.
+
+Install the Chatterino and OBS build dependencies first. For Fedora 44 this includes at least Qt 6,
+OpenSSL, Boost, Hunspell, libnotify, CMake/Ninja, and the OBS Studio development files.
+
+Example package install:
+
+```sh
+sudo dnf install cmake ninja-build gcc-c++ git \
+  qt6-qtbase-devel qt6-qtsvg-devel qt6-qtimageformats \
+  openssl-devel boost-devel hunspell-devel libnotify-devel \
+  obs-studio-devel
+```
+
+If you run OBS on Wayland, also install:
+
+```sh
+sudo dnf install qt6-qtwayland
+```
+
+Then build and install:
+
+```sh
+git submodule update --init --recursive
+cmake --preset ubuntu-x86_64
+cmake --build --preset ubuntu-x86_64
+cmake --install build_x86_64
+```
+
+On Fedora x86_64 the plugin library should end up under:
+
+```text
+~/.config/obs-studio/plugins/chatterino-obs/bin/64bit/chatterino-obs.so
+```
+
+and the data files under:
+
+```text
+~/.config/obs-studio/plugins/chatterino-obs/data/
+```
 
 ## Windows and clangd
 
