@@ -22,9 +22,7 @@ As you can tell, this is not an ideal workflow.
 
 ## Linux / Fedora 44
 
-The Linux preset also works on Fedora. The important part is to let CMake pick the distro-default
-library directory so the plugin installs into the OBS plugin path that Fedora expects (`/usr/lib64`
-on x86_64 Fedora instead of a Debian-style multiarch path).
+On Fedora, install this as a per-user OBS plugin under `~/.config/obs-studio/plugins`.
 
 Install the Chatterino and OBS build dependencies first. For Fedora 44 this includes at least Qt 6,
 OpenSSL, Boost, Hunspell, libnotify, CMake/Ninja, and the OBS Studio development files.
@@ -50,19 +48,19 @@ Then build and install:
 git submodule update --init --recursive
 cmake --preset ubuntu-x86_64
 cmake --build --preset ubuntu-x86_64
-cmake --install build_x86_64 --prefix /tmp/chatterino-obs-install
+cmake --install build_x86_64
 ```
 
 On Fedora x86_64 the plugin library should end up under:
 
 ```text
-/tmp/chatterino-obs-install/lib64/obs-plugins/
+~/.config/obs-studio/plugins/chatterino-obs/bin/64bit/chatterino-obs.so
 ```
 
 and the data files under:
 
 ```text
-/tmp/chatterino-obs-install/share/obs/obs-plugins/chatterino-obs/
+~/.config/obs-studio/plugins/chatterino-obs/data/
 ```
 
 ## Windows and clangd
