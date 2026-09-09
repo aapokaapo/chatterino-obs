@@ -20,19 +20,28 @@
 #include <obs-frontend-api.h>
 #include <plugin-support.h>
 
-#include <QWidget>
-#include <QDockWidget>
-#include <QObject>
-#include <QFrame>
-#include <QVBoxLayout>
-#include <QStandardPaths>
-#include <QLabel>
+#include <QAction>
+#include <QJsonDocument>
+#include <QJsonObject>
 #include <QMainWindow>
-#include <QUuid>
-#include <QSizePolicy>
-#include <QSSLSocket>
 #include <QPluginLoader>
 #include <QPointer>
+#include <QResizeEvent>
+#include <QSslSocket>
+#include <QStringView>
+#include <QWidget>
+#include <QDockWidget>
+#include <QFrame>
+#include <QObject>
+#include <QSizePolicy>
+#include <QStandardPaths>
+#include <QUuid>
+#include <QVBoxLayout>
+
+#include <memory>
+#include <string>
+#include <utility>
+#include <vector>
 
 namespace {
 
